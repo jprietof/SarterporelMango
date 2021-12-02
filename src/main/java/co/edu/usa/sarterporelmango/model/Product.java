@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Prodruct {
+public class Product {
 	@Id
 	private String reference;
 	private String brand;
