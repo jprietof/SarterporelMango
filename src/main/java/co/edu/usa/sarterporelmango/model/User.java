@@ -1,5 +1,7 @@
 package co.edu.usa.sarterporelmango.model;
 
+//import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,6 +22,7 @@ public class User {
 	private Integer id;
 	private String identification;
 	private String name;
+	//private Date birthtDay;
 	private String address;
 	private String cellPhone;
 	private String email;

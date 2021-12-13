@@ -50,11 +50,11 @@ public class RepositoryOrder {
 	 }
 	 
 	 public List<Order> ordersSalesManByDate(String dateStr, Integer id){
-		 DateTimeFormartter dft = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		 Query query = new Query();
 		 Criteria dateCriteria = Criteria.where("registerDay")
 				 .gte(LocalDate.parse(dateStr, dtf).minusDays(1).atStartOfDay())
-				 .lt(LocalDate.parse(dateSter, dtf).plusDays(2)).atStartOfDat())
+				 .lt(LocalDate.parse(dateStr, dtf).plusDays(2).atStartOfDay())
 				 .and("salesMan.id").is(id);
 		query.addCriteria(dateCriteria);
 		List<Order> orders = mongoTemplate.find(query, Order.class);
@@ -62,12 +62,12 @@ public class RepositoryOrder {
 		 
 	 }
 	 
-	 public List<Order>  ordersSalesManByState(string state, Integer id){
+	 public List<Order>  ordersSalesManByState(String state, Integer id){
 		 Query query = new Query();
 		 Criteria dateCriteria = Criteria.where("salesMan.id").is(id)
 			.and("status").is(state);
 		 
-		 query.addCriteria((dateCriteria);
+		 query.addCriteria(dateCriteria);
 		 List<Order> orders = mongoTemplate.find(query, Order.class);
 		 return orders;
 	 }

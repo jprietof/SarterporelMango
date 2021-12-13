@@ -97,4 +97,8 @@ public class ServiceUser {
 			return usuario.get();
 		}
 	}
+	
+	/*public List<User> birthDayList(String monthBirthDay){
+		return userRepository.birthDayList(monthBirthDay);
+	}*/
 }

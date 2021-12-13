@@ -48,4 +48,8 @@ public class RepositoryUser {
     public Optional<User> autenticarUsuario(String email, String password) {
         return userCrudRepository.findByEmailAndPassword(email, password);
     }
+    
+    /*public List<User> birthDayList(String monthBirthtDay){
+    	return userCrudRepository.findByMonthBirthDay(monthBirthtDay);
+    }*/
 }
