@@ -74,7 +74,7 @@ public class RepositoryOrder {
 	 
 	 public List<Order> ordersSalesManByDate(String dateStr, Integer id){
 		 
-		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY-mm-dd");
+		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	        Query query = new Query();
 	        
 	        Criteria dateCriteria = Criteria.where("registerDay")
