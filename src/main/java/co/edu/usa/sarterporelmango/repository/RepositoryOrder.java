@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import co.edu.usa.sarterporelmango.model.Order;
 import co.edu.usa.sarterporelmango.model.dao.IOrder;
 
+//import java.text.ParseException;
+//import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -49,26 +51,47 @@ public class RepositoryOrder {
 		 return orderCrudRepository.findByZone(zona);
 	 }
 	 
-	 public List<Order> ordersSalesManByDate(String dateStr, Integer id){
-		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	 public List<Order> ordersSalesManByID(Integer id){
+		 //return orderCrudRepository.findBySalesManId(id);
 		 Query query = new Query();
-		 Criteria dateCriteria = Criteria.where("registerDay")
-				 .gte(LocalDate.parse(dateStr, dtf).minusDays(1).atStartOfDay())
-				 .lt(LocalDate.parse(dateStr, dtf).plusDays(2).atStartOfDay())
-				 .and("salesMan.id").is(id);
-		query.addCriteria(dateCriteria);
-		List<Order> orders = mongoTemplate.find(query, Order.class);
-		return orders;
-		 
+		 Criteria dateCriteria = Criteria.where("salesMan.id").is(id);
+		 query.addCriteria(dateCriteria);
+		 List<Order> orders = mongoTemplate.find(query, Order.class);
+		 return orders;
 	 }
 	 
 	 public List<Order>  ordersSalesManByState(String state, Integer id){
+		 //return orderCrudRepository.findByStatus(id, state);
 		 Query query = new Query();
 		 Criteria dateCriteria = Criteria.where("salesMan.id").is(id)
-			.and("status").is(state);
+				 .and("status").is(state);
 		 
 		 query.addCriteria(dateCriteria);
 		 List<Order> orders = mongoTemplate.find(query, Order.class);
 		 return orders;
+	 }
+	 
+	 
+	 public List<Order> ordersSalesManByDate(String dateStr, Integer id){
+		 
+		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY-mm-dd");
+	        Query query = new Query();
+	        
+	        Criteria dateCriteria = Criteria.where("registerDay")
+	        		.gte(LocalDate.parse(dateStr, dtf).minusDays(1).atStartOfDay())
+	        		.lt(LocalDate.parse(dateStr, dtf).plusDays(1).atStartOfDay())
+	        		.and("salesMan.id").is(id);
+	       
+	        query.addCriteria(dateCriteria);
+	        
+	        List<Order> orders = mongoTemplate.find(query, Order.class);
+	        
+	        return orders; 
+		 /*try {
+			 return orderCrudRepository.findByRegisterDate(new SimpleDateFormat("yyyy-MM-dd").parse(dateStr),id);
+		 } catch (ParseException e){
+			 e.printStackTrace();
+			 return null;
+		 }*/
 	 }
 }

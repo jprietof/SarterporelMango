@@ -98,7 +98,7 @@ public class ServiceUser {
 		}
 	}
 	
-	/*public List<User> birthDayList(String monthBirthDay){
+	public List<User> birthDayList(String monthBirthDay){
 		return userRepository.birthDayList(monthBirthDay);
-	}*/
+	}
 }

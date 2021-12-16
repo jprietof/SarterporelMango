@@ -49,7 +49,7 @@ public class RepositoryUser {
         return userCrudRepository.findByEmailAndPassword(email, password);
     }
     
-    /*public List<User> birthDayList(String monthBirthtDay){
-    	return userCrudRepository.findByMonthBirthDay(monthBirthtDay);
-    }*/
+    public List<User> birthDayList(String monthBirthtDay){
+    	return userCrudRepository.findByMonthBirthtDay(monthBirthtDay);
+    }
 }
