@@ -36,4 +36,12 @@ public class RepositoryProduct {
 	public void delete(Product product){
 		productCrudRepository.delete(product);
 	}
+	
+	//Reto 5
+	public List<Product> productByPrice(double precio){
+		return productCrudRepository.findByPriceLessThanEqual(precio);
+	}
+	public List<Product> findByDescriptionLike(String description){
+		return productCrudRepository.findByDescriptionLike(description);
+	}
 }

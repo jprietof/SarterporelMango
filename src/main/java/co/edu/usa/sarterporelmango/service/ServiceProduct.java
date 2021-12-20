@@ -79,4 +79,13 @@ public class ServiceProduct {
 		}).orElse(false);
 		return aBoolean;
 	}
+	
+	//Reto 5
+	public List<Product> productByPrice(double price){
+		return cookRepository.productByPrice(price);
+	}
+	
+	public List<Product> findByDescriptionLike(String description){
+		return cookRepository.findByDescriptionLike(description);
+	}
 }

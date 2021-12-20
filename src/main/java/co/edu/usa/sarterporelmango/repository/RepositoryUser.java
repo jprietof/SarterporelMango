@@ -49,7 +49,12 @@ public class RepositoryUser {
         return userCrudRepository.findByEmailAndPassword(email, password);
     }
     
+    public Optional<User> lastUserId(){
+    	return userCrudRepository.findTopByOrderByIdDesc();
+    }
+    //Reto 5
     public List<User> birthDayList(String monthBirthtDay){
     	return userCrudRepository.findByMonthBirthtDay(monthBirthtDay);
     }
+    
 }

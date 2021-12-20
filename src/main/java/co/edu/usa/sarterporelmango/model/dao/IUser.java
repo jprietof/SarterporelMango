@@ -17,6 +17,7 @@ public interface IUser extends MongoRepository<User, Integer>{
 	Optional<User> findByEmail(String email);
 	List<User> findBybirthtDay(Date date);
     Optional<User> findByEmailAndPassword(String email,String password);
-    
+    Optional<User> findTopByOrderByIdDesc();
+    //reto5 
     List<User> findByMonthBirthtDay(String monthBirthtDay);
 }
